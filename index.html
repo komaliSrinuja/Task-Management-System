@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">PRODUCTIVITY WORKSPACE</p>
+      <h1>Task Management System</h1>
+      <p class="subtitle">Organize tasks, track progress, and meet deadlines.</p>
+    </div>
+    <span class="tag">Mini Project</span>
+  </header>
+
+  <main class="container">
+    <section class="stats" aria-label="Task summary">
+      <article class="stat-card"><span>Total Tasks</span><strong id="totalCount">0</strong></article>
+      <article class="stat-card"><span>To Do</span><strong id="todoCount">0</strong></article>
+      <article class="stat-card"><span>In Progress</span><strong id="progressCount">0</strong></article>
+      <article class="stat-card"><span>Completed</span><strong id="doneCount">0</strong></article>
+    </section>
+
+    <section class="panel">
+      <h2 id="formTitle">Add a Task</h2>
+      <form id="taskForm">
+        <input type="hidden" id="taskId">
+        <div class="form-grid">
+          <label>Task title
+            <input id="title" type="text" placeholder="e.g., Prepare project report" required maxlength="100">
+          </label>
+          <label>Assigned to
+            <input id="assignee" type="text" placeholder="e.g., Komali" maxlength="60">
+          </label>
+          <label>Due date
+            <input id="dueDate" type="date">
+          </label>
+          <label>Status
+            <select id="status">
+              <option value="To Do">To Do</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </label>
+        </div>
+        <label>Description
+          <textarea id="description" rows="3" placeholder="Add a short description..." maxlength="500"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" id="saveButton">Add Task</button>
+          <button type="button" id="cancelEdit" class="secondary hidden">Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="list-heading">
+        <div>
+          <h2>Tasks</h2>
+          <p class="muted">Search or filter your task list.</p>
+        </div>
+        <div class="filters">
+          <input id="search" type="search" placeholder="Search tasks..." aria-label="Search tasks">
+          <select id="filterStatus" aria-label="Filter by status">
+            <option value="All">All statuses</option>
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+      </div>
+      <div id="taskList" class="task-list"></div>
+      <p id="emptyMessage" class="empty">No tasks yet. Add your first task above.</p>
+    </section>
+    <p class="footnote">Demo project: tasks are saved in this browser using localStorage.</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
